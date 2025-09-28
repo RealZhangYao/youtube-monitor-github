@@ -9,7 +9,7 @@ import logging
 import time
 from typing import Optional, Dict, Any
 
-from google import genai
+import google.generativeai as genai
 
 logger = logging.getLogger(__name__)
 
@@ -28,8 +28,8 @@ class AISummarizer:
         Args:
             api_key: Google AI Studio API key
         """
-        self.client = genai.Client(api_key=api_key)
-        self.model_name = GEMINI_MODEL
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel(GEMINI_MODEL)
         
         logger.info(f"AI Summarizer initialized with model: {GEMINI_MODEL}")
     
@@ -64,10 +64,7 @@ class AISummarizer:
         # Try to generate summary with retries
         for attempt in range(max_retries):
             try:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=prompt
-                )
+                response = self.model.generate_content(prompt)
                 
                 # Check if response was blocked or empty
                 if not hasattr(response, 'text'):
@@ -199,10 +196,7 @@ Provide a brief summary focusing on the main points discussed in this section.
 """
             
             try:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=chunk_prompt
-                )
+                response = self.model.generate_content(chunk_prompt)
                 
                 if response.text:
                     chunk_summaries.append(response.text.strip())
@@ -236,10 +230,7 @@ Keep it under {max_words} words.
         )
         
         try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=combined_summary_prompt
-            )
+            response = self.model.generate_content(combined_summary_prompt)
             
             if response.text:
                 return response.text.strip()
@@ -258,9 +249,8 @@ Keep it under {max_words} words.
             True if connection successful, False otherwise
         """
         try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents="Say 'API connection successful' in 5 words or less."
+            response = self.model.generate_content(
+                "Say 'API connection successful' in 5 words or less."
             )
             
             if response.text:
