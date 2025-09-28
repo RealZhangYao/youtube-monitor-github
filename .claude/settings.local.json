@@ -5,7 +5,15 @@
       "Bash(uv pip install:*)",
       "Bash(source:*)",
       "Bash(python:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(chmod:*)",
+      "mcp__github__list_workflow_runs",
+      "mcp__github__get_job_logs",
+      "Bash(grep:*)",
+      "Bash(git reset:*)"
     ],
     "deny": [],
     "ask": [],
