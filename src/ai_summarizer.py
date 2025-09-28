@@ -9,13 +9,12 @@ import logging
 import time
 from typing import Optional, Dict, Any
 
-import google.generativeai as genai
-from google.generativeai.types import HarmCategory, HarmBlockThreshold
+from google import genai
 
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = 'gemini-1.5-flash'
+GEMINI_MODEL = 'gemini-2.0-flash-exp'
 MAX_SUMMARY_LENGTH = 300
 
 
@@ -29,16 +28,8 @@ class AISummarizer:
         Args:
             api_key: Google AI Studio API key
         """
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel(GEMINI_MODEL)
-        
-        # Safety settings to allow most content
-        self.safety_settings = {
-            HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-            HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-            HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-            HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        }
+        self.client = genai.Client(api_key=api_key)
+        self.model_name = GEMINI_MODEL
         
         logger.info(f"AI Summarizer initialized with model: {GEMINI_MODEL}")
     
@@ -73,20 +64,14 @@ class AISummarizer:
         # Try to generate summary with retries
         for attempt in range(max_retries):
             try:
-                response = self.model.generate_content(
-                    prompt,
-                    safety_settings=self.safety_settings,
-                    generation_config={
-                        'temperature': 0.7,
-                        'top_p': 0.8,
-                        'top_k': 40,
-                        'max_output_tokens': 1024,
-                    }
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=prompt
                 )
                 
-                # Check if response was blocked
-                if response.prompt_feedback.block_reason:
-                    logger.warning(f"Prompt was blocked: {response.prompt_feedback.block_reason}")
+                # Check if response was blocked or empty
+                if not hasattr(response, 'text'):
+                    logger.warning("Response does not contain text")
                     return self._create_fallback_summary(video_info)
                 
                 # Extract summary text
@@ -214,9 +199,9 @@ Provide a brief summary focusing on the main points discussed in this section.
 """
             
             try:
-                response = self.model.generate_content(
-                    chunk_prompt,
-                    safety_settings=self.safety_settings
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=chunk_prompt
                 )
                 
                 if response.text:
@@ -251,9 +236,9 @@ Keep it under {max_words} words.
         )
         
         try:
-            response = self.model.generate_content(
-                combined_summary_prompt,
-                safety_settings=self.safety_settings
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=combined_summary_prompt
             )
             
             if response.text:
@@ -273,9 +258,9 @@ Keep it under {max_words} words.
             True if connection successful, False otherwise
         """
         try:
-            response = self.model.generate_content(
-                "Say 'API connection successful' in 5 words or less.",
-                safety_settings=self.safety_settings
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents="Say 'API connection successful' in 5 words or less."
             )
             
             if response.text:

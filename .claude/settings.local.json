@@ -13,7 +13,8 @@
       "mcp__github__list_workflow_runs",
       "mcp__github__get_job_logs",
       "Bash(grep:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "mcp__github__get_workflow_run"
     ],
     "deny": [],
     "ask": [],
