@@ -156,8 +156,47 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
         
         if not transcript:
             logger.warning(f"No transcript available for: {video['title']}")
-            # Mark as processed anyway to avoid retrying
-            data_store.mark_video_processed(channel_id, video['id'], video)
+            
+            # Generate basic summary without transcript
+            basic_summary = f"""
+新视频通知
+
+标题: {video['title']}
+频道: {video['channel_title']}
+时长: {video['duration']}
+观看次数: {video['view_count']:,} 次
+发布时间: {video['published_at']}
+
+链接: {video['url']}
+
+注：该视频未开启字幕功能，无法生成内容摘要。
+"""
+            
+            # Send email notification with basic info
+            email_sent = email_sender.send_video_notification(
+                recipient_email,
+                video,
+                basic_summary
+            )
+            
+            if not email_sent:
+                logger.error(f"Failed to send email for: {video['title']}")
+            
+            # Mark as processed
+            data_store.mark_video_processed(
+                channel_id, 
+                video['id'], 
+                video,
+                summary=basic_summary,
+                email_sent=email_sent
+            )
+            
+            result['new_videos_count'] += 1
+            result['processed_videos'].append({
+                'video_id': video['id'],
+                'title': video['title'],
+                'summary': '无字幕，仅包含基本信息'
+            })
             continue
         
         # Save transcript

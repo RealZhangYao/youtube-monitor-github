@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(uv pip install:*)",
+      "Bash(source:*)",
+      "Bash(python:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/yaozhang/.ssh"
+    ]
+  }
+}
