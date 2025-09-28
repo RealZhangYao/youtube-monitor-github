@@ -12,7 +12,7 @@ on:
       test_mode:
         description: 'Run in test mode'
         required: false
-        default: 'false'
+        default: 'true'
 
 permissions:
   contents: write
