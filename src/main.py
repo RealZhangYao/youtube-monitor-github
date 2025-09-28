@@ -108,13 +108,27 @@ def main():
     summary_file = Path('data/last_run_summary.json')
     summary_file.parent.mkdir(parents=True, exist_ok=True)
     
+    summary_data = {
+        'timestamp': datetime.now(timezone.utc).isoformat(),
+        'total_new_videos': total_new_videos,
+        'channels_processed': len(config['channels']),
+        'results': all_results
+    }
+    
     with open(summary_file, 'w') as f:
-        json.dump({
-            'timestamp': datetime.now(timezone.utc).isoformat(),
-            'total_new_videos': total_new_videos,
-            'channels_processed': len(config['channels']),
-            'results': all_results
-        }, f, indent=2)
+        json.dump(summary_data, f, indent=2)
+    
+    # Send summary email (always, even if no new videos)
+    logger.info("Sending summary email...")
+    email_sent = email_sender.send_summary_email(
+        config['recipient_email'],
+        summary_data
+    )
+    
+    if email_sent:
+        logger.info("Summary email sent successfully")
+    else:
+        logger.error("Failed to send summary email")
 
 
 def process_channel(channel_id, youtube_client, transcript_fetcher, 
