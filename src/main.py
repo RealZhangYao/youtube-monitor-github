@@ -253,7 +253,7 @@ def test_components(youtube_client, transcript_fetcher, ai_summarizer,
     # Test YouTube API
     try:
         results['youtube_api'] = youtube_client.check_api_quota()
-        logger.info(f"YouTube API: {'✓' if results['youtube_api'] else '✗'}")
+        logger.info(f"YouTube API: {'OK' if results['youtube_api'] else 'FAILED'}")
     except Exception as e:
         logger.error(f"YouTube API test failed: {e}")
     
@@ -262,21 +262,21 @@ def test_components(youtube_client, transcript_fetcher, ai_summarizer,
         # Test with a known video
         transcript, _ = transcript_fetcher.fetch_transcript('dQw4w9WgXcQ')
         results['transcript_api'] = transcript is not None
-        logger.info(f"Transcript API: {'✓' if results['transcript_api'] else '✗'}")
+        logger.info(f"Transcript API: {'OK' if results['transcript_api'] else 'FAILED'}")
     except Exception as e:
         logger.error(f"Transcript API test failed: {e}")
     
     # Test Gemini API
     try:
         results['gemini_api'] = ai_summarizer.test_connection()
-        logger.info(f"Gemini API: {'✓' if results['gemini_api'] else '✗'}")
+        logger.info(f"Gemini API: {'OK' if results['gemini_api'] else 'FAILED'}")
     except Exception as e:
         logger.error(f"Gemini API test failed: {e}")
     
     # Test Gmail SMTP
     try:
         results['gmail_smtp'] = email_sender.test_connection()
-        logger.info(f"Gmail SMTP: {'✓' if results['gmail_smtp'] else '✗'}")
+        logger.info(f"Gmail SMTP: {'OK' if results['gmail_smtp'] else 'FAILED'}")
     except Exception as e:
         logger.error(f"Gmail SMTP test failed: {e}")
     
@@ -284,13 +284,13 @@ def test_components(youtube_client, transcript_fetcher, ai_summarizer,
     try:
         test_data = data_store.get_processed_videos('test_channel')
         results['data_store'] = True
-        logger.info(f"Data Store: ✓")
+        logger.info(f"Data Store: OK")
     except Exception as e:
         logger.error(f"Data Store test failed: {e}")
     
     # Summary
     all_passed = all(results.values())
-    logger.info(f"All tests passed: {'✓' if all_passed else '✗'}")
+    logger.info(f"All tests passed: {'YES' if all_passed else 'NO'}")
     
     # Save test results
     with open('data/test_results.json', 'w') as f:

@@ -15,7 +15,7 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = 'gemini-1.5-flash'
+GEMINI_MODEL = 'gemini-1.5-flash-latest'
 MAX_SUMMARY_LENGTH = 300
 
 

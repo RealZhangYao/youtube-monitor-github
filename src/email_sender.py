@@ -21,7 +21,9 @@ class EmailSender:
         self.gmail_password = gmail_password
         self.smtp_server = "smtp.gmail.com"
         self.smtp_port = 587
-        logger.info(f"Email sender initialized for {gmail_user}")
+        # Mask email for logging
+        masked_email = gmail_user[:3] + '***' if len(gmail_user) > 3 else '***'
+        logger.info(f"Email sender initialized for {masked_email}")
     
     def send_video_notification(self, recipient: str, video_info: dict, summary: str) -> bool:
         """Send notification email about a new video."""
