@@ -77,7 +77,7 @@ class DownSubFetcher:
 
     def _get_subtitle_info(self, video_url: str) -> Optional[List[Dict]]:
         """
-        Get available subtitle information from DownSub.com.
+        Get available subtitle information from DownSub.com using the discovered API.
 
         Args:
             video_url: YouTube video URL
@@ -86,48 +86,75 @@ class DownSubFetcher:
             List of available subtitle tracks or None
         """
         try:
-            # Method 1: Try web scraping approach (more reliable)
-            logger.debug(f"Trying web scraping approach for {video_url}")
-            result = self._scrape_subtitle_info(video_url)
-            if result:
-                return result
+            # Use the discovered working API endpoint
+            api_url = "https://get.downsub.com/"
 
-            # Method 2: Try different API approaches
-            api_endpoints = [
-                f"{self.base_url}/api/subtitles",
-                f"{self.base_url}/api/download"
-            ]
+            # Update headers to match working request
+            self.session.headers.update({
+                'Referer': 'https://downsub.com/',
+                'Origin': 'https://downsub.com',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json, text/plain, */*',
+                'X-Requested-With': 'XMLHttpRequest'
+            })
 
-            for api_url in api_endpoints:
+            logger.debug(f"Calling DownSub API: {api_url}")
+
+            # Try the API call that we know works
+            payload = {'url': video_url}
+            response = self.session.post(api_url, json=payload, timeout=30)
+            logger.debug(f"DownSub API response status: {response.status_code}")
+
+            if response.status_code == 200:
                 try:
-                    logger.debug(f"Trying API endpoint: {api_url}")
-                    data = {
-                        'url': video_url,
-                        'format': 'json'
-                    }
+                    result = response.json()
+                    logger.debug(f"DownSub API response: {result}")
 
-                    response = self.session.post(api_url, data=data, timeout=30)
-                    logger.debug(f"API response status: {response.status_code}")
+                    # Check for subtitles in the response
+                    subtitles = result.get('subtitles', [])
+                    auto_subtitles = result.get('subtitlesAutoTrans', [])
 
-                    if response.status_code == 200:
-                        # Try to parse as JSON first
-                        try:
-                            result = response.json()
-                            if result.get('subtitles'):
-                                return result['subtitles']
-                        except:
-                            # If not JSON, try to parse as HTML
-                            return self._parse_subtitle_links(response.text)
+                    all_subtitles = []
+
+                    # Process manual subtitles
+                    for sub in subtitles:
+                        all_subtitles.append({
+                            'url': sub.get('url'),
+                            'language': sub.get('lang', 'unknown'),
+                            'description': sub.get('name', 'Manual subtitle'),
+                            'auto_generated': False
+                        })
+
+                    # Process auto-generated subtitles
+                    for sub in auto_subtitles:
+                        all_subtitles.append({
+                            'url': sub.get('url'),
+                            'language': sub.get('lang', 'unknown'),
+                            'description': sub.get('name', 'Auto-generated subtitle'),
+                            'auto_generated': True
+                        })
+
+                    if all_subtitles:
+                        logger.info(f"DownSub API found {len(all_subtitles)} subtitle tracks")
+                        return all_subtitles
+                    else:
+                        logger.debug("DownSub API returned no subtitles")
+                        # If API returns no subtitles, try the fallback web scraping method
+                        return self._scrape_subtitle_info(video_url)
 
                 except Exception as e:
-                    logger.debug(f"API endpoint {api_url} failed: {e}")
-                    continue
+                    logger.error(f"Error parsing DownSub API response: {e}")
+                    return None
 
-            return None
+            else:
+                logger.warning(f"DownSub API returned status {response.status_code}")
+                # Fallback to web scraping if API fails
+                return self._scrape_subtitle_info(video_url)
 
         except Exception as e:
-            logger.error(f"Error getting subtitle info: {e}")
-            return None
+            logger.error(f"Error calling DownSub API: {e}")
+            # Fallback to web scraping method
+            return self._scrape_subtitle_info(video_url)
 
     def _scrape_subtitle_info(self, video_url: str) -> Optional[List[Dict]]:
         """
