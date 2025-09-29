@@ -29,13 +29,57 @@ class YouTubeClient:
         self.youtube = build('youtube', 'v3', developerKey=api_key)
         logger.info("YouTube client initialized")
     
+    def get_channel_id_by_username(self, username: str) -> Optional[str]:
+        """
+        Get channel ID from username (handle like @lidangzzz).
+
+        Args:
+            username: YouTube username/handle (with or without @)
+
+        Returns:
+            Channel ID or None if not found
+        """
+        try:
+            # Remove @ if present
+            clean_username = username.lstrip('@')
+
+            # Try forUsername parameter first
+            request = self.youtube.channels().list(
+                part='id',
+                forUsername=clean_username
+            )
+            response = request.execute()
+
+            if response.get('items'):
+                return response['items'][0]['id']
+
+            # If forUsername doesn't work, try handle parameter (newer format)
+            request = self.youtube.channels().list(
+                part='id',
+                forHandle=clean_username
+            )
+            response = request.execute()
+
+            if response.get('items'):
+                return response['items'][0]['id']
+
+            logger.warning(f"Channel not found for username: {username}")
+            return None
+
+        except HttpError as e:
+            logger.error(f"YouTube API error for username {username}: {e}")
+            return None
+        except Exception as e:
+            logger.error(f"Unexpected error getting channel ID: {e}")
+            return None
+
     def get_channel_info(self, channel_id: str) -> Optional[Dict[str, Any]]:
         """
         Get channel information including title and uploads playlist ID.
-        
+
         Args:
             channel_id: YouTube channel ID
-            
+
         Returns:
             Channel info dict or None if not found
         """
@@ -45,11 +89,11 @@ class YouTubeClient:
                 id=channel_id
             )
             response = request.execute()
-            
+
             if not response.get('items'):
                 logger.warning(f"Channel not found: {channel_id}")
                 return None
-            
+
             channel = response['items'][0]
             return {
                 'id': channel['id'],
@@ -58,7 +102,7 @@ class YouTubeClient:
                 'uploads_playlist_id': channel['contentDetails']['relatedPlaylists']['uploads'],
                 'thumbnail_url': channel['snippet']['thumbnails']['high']['url']
             }
-            
+
         except HttpError as e:
             logger.error(f"YouTube API error for channel {channel_id}: {e}")
             return None

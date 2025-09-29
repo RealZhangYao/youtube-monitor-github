@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from youtube_client import YouTubeClient
 from transcript_fetcher import TranscriptFetcher
+from downsub_fetcher import DownSubFetcher
 from ai_summarizer import AISummarizer
 from email_sender import EmailSender
 from data_store import DataStore
@@ -30,15 +31,18 @@ def main():
     """Main function for YouTube monitoring."""
     logger.info("YouTube Monitor started")
     
-    # Configuration
+    # Configuration - specifically for @lidangzzz channel
     config = {
         'youtube_api_key': os.environ.get('YOUTUBE_API_KEY'),
         'gemini_api_key': os.environ.get('GEMINI_API_KEY'),
         'gmail_user': os.environ.get('GMAIL_USER'),
         'gmail_password': os.environ.get('GMAIL_APP_PASSWORD'),
         'recipient_email': os.environ.get('RECIPIENT_EMAIL'),
+        'target_username': os.environ.get('TARGET_USERNAME', 'lidangzzz'),  # Default to lidangzzz
         'channels': os.environ.get('CHANNELS_TO_MONITOR', '').split(','),
-        'test_mode': os.environ.get('TEST_MODE', 'false').lower() == 'true'
+        'test_mode': os.environ.get('TEST_MODE', 'false').lower() == 'true',
+        'use_downsub': os.environ.get('USE_DOWNSUB', 'true').lower() == 'true',
+        'get_latest': os.environ.get('GET_LATEST', 'false').lower() == 'true'
     }
     
     # Validate configuration
@@ -50,48 +54,69 @@ def main():
         logger.error(f"Missing required configuration: {', '.join(missing_keys)}")
         sys.exit(1)
     
-    if not config['channels'] or config['channels'] == ['']:
-        logger.error("No channels to monitor")
-        sys.exit(1)
-    
     # Initialize components
     youtube_client = YouTubeClient(config['youtube_api_key'])
     transcript_fetcher = TranscriptFetcher()
+    downsub_fetcher = DownSubFetcher()
     ai_summarizer = AISummarizer(config['gemini_api_key'])
     email_sender = EmailSender(config['gmail_user'], config['gmail_password'])
     data_store = DataStore('data')
+
+    # Get channel ID for the target username
+    target_channel_id = None
+    if config['target_username']:
+        logger.info(f"Looking up channel ID for username: @{config['target_username']}")
+        target_channel_id = youtube_client.get_channel_id_by_username(config['target_username'])
+        if not target_channel_id:
+            logger.error(f"Could not find channel ID for @{config['target_username']}")
+            sys.exit(1)
+        logger.info(f"Found channel ID: {target_channel_id}")
+
+    # Use either the target channel or configured channels
+    channels_to_monitor = []
+    if target_channel_id:
+        channels_to_monitor = [target_channel_id]
+    elif config['channels'] and config['channels'] != ['']:
+        channels_to_monitor = config['channels']
+    else:
+        logger.error("No channels to monitor - please set TARGET_USERNAME or CHANNELS_TO_MONITOR")
+        sys.exit(1)
     
     # Test mode
     if config['test_mode']:
         logger.info("Running in test mode")
-        test_components(youtube_client, transcript_fetcher, ai_summarizer, 
-                       email_sender, data_store)
+        test_components(youtube_client, transcript_fetcher, downsub_fetcher,
+                       ai_summarizer, email_sender, data_store)
         return
-    
+
     # Process each channel
     total_new_videos = 0
     all_results = []
-    
-    for channel_id in config['channels']:
+
+    for channel_id in channels_to_monitor:
         if not channel_id.strip():
             continue
-            
+
         logger.info(f"Processing channel: {channel_id}")
-        
+
         try:
+            # Choose the appropriate transcript fetcher
+            fetcher = downsub_fetcher if config['use_downsub'] else transcript_fetcher
+
             result = process_channel(
                 channel_id.strip(),
                 youtube_client,
-                transcript_fetcher,
+                fetcher,
                 ai_summarizer,
                 email_sender,
                 data_store,
-                config['recipient_email']
+                config['recipient_email'],
+                get_latest_only=config['get_latest']
             )
-            
+
             all_results.append(result)
             total_new_videos += result['new_videos_count']
-            
+
         except Exception as e:
             logger.error(f"Error processing channel {channel_id}: {e}")
             all_results.append({
@@ -101,17 +126,22 @@ def main():
             })
     
     # Summary
-    logger.info(f"Processing complete. Total new videos: {total_new_videos}")
+    if config['get_latest']:
+        logger.info(f"GET_LATEST mode: Processing complete. Videos processed: {total_new_videos}")
+    else:
+        logger.info(f"Processing complete. Total new videos: {total_new_videos}")
     logger.info(f"Results: {json.dumps(all_results, indent=2)}")
-    
+
     # Save summary
     summary_file = Path('data/last_run_summary.json')
     summary_file.parent.mkdir(parents=True, exist_ok=True)
-    
+
     summary_data = {
         'timestamp': datetime.now(timezone.utc).isoformat(),
         'total_new_videos': total_new_videos,
-        'channels_processed': len(config['channels']),
+        'channels_processed': len(channels_to_monitor),
+        'target_username': config.get('target_username'),
+        'use_downsub': config.get('use_downsub'),
         'results': all_results
     }
     
@@ -131,14 +161,16 @@ def main():
         logger.error("Failed to send summary email")
 
 
-def process_channel(channel_id, youtube_client, transcript_fetcher, 
-                   ai_summarizer, email_sender, data_store, recipient_email):
+def process_channel(channel_id, youtube_client, transcript_fetcher,
+                   ai_summarizer, email_sender, data_store, recipient_email,
+                   get_latest_only=False):
     """Process a single YouTube channel."""
     result = {
         'channel_id': channel_id,
         'channel_name': 'Unknown',
         'new_videos_count': 0,
-        'processed_videos': []
+        'processed_videos': [],
+        'get_latest_only': get_latest_only
     }
     
     # Get channel info
@@ -150,20 +182,38 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
     
     result['channel_name'] = channel_info['title']
     
-    # Get processed videos
-    processed_videos = data_store.get_processed_videos(channel_id)
-    processed_video_ids = {v['video_id'] for v in processed_videos}
-    
-    # Get latest videos
-    latest_videos = youtube_client.get_latest_videos(channel_id, max_results=10)
-    
-    # Process new videos
-    for video in latest_videos:
-        if video['id'] in processed_video_ids:
-            logger.info(f"Video already processed: {video['title']}")
-            continue
-        
-        logger.info(f"Processing new video: {video['title']}")
+    if get_latest_only:
+        # Get latest mode: only process the most recent video, ignore processed status
+        logger.info(f"GET_LATEST mode: fetching only the most recent video")
+        latest_videos = youtube_client.get_latest_videos(channel_id, max_results=1)
+
+        if not latest_videos:
+            logger.warning(f"No videos found for channel {channel_id}")
+            return result
+
+        # Process the latest video regardless of whether it was processed before
+        videos_to_process = latest_videos
+        logger.info(f"Processing latest video: {latest_videos[0]['title']}")
+
+    else:
+        # Normal mode: check for new videos since last run
+        processed_videos = data_store.get_processed_videos(channel_id)
+        processed_video_ids = {v['video_id'] for v in processed_videos}
+
+        # Get latest videos
+        latest_videos = youtube_client.get_latest_videos(channel_id, max_results=10)
+
+        # Filter out already processed videos
+        videos_to_process = []
+        for video in latest_videos:
+            if video['id'] in processed_video_ids:
+                logger.info(f"Video already processed: {video['title']}")
+                continue
+            videos_to_process.append(video)
+
+    # Process videos
+    for video in videos_to_process:
+        logger.info(f"Processing video: {video['title']}")
         
         # Get transcript
         transcript, language = transcript_fetcher.fetch_transcript(video['id'])
@@ -196,14 +246,15 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
             if not email_sent:
                 logger.error(f"Failed to send email for: {video['title']}")
             
-            # Mark as processed
-            data_store.mark_video_processed(
-                channel_id, 
-                video['id'], 
-                video,
-                summary=basic_summary,
-                email_sent=email_sent
-            )
+            # Mark as processed (only in normal mode)
+            if not get_latest_only:
+                data_store.mark_video_processed(
+                    channel_id,
+                    video['id'],
+                    video,
+                    summary=basic_summary,
+                    email_sent=email_sent
+                )
             
             result['new_videos_count'] += 1
             result['processed_videos'].append({
@@ -232,14 +283,15 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
         if not email_sent:
             logger.error(f"Failed to send email for: {video['title']}")
         
-        # Mark as processed
-        data_store.mark_video_processed(
-            channel_id, 
-            video['id'], 
-            video,
-            summary=summary,
-            email_sent=email_sent
-        )
+        # Mark as processed (only in normal mode)
+        if not get_latest_only:
+            data_store.mark_video_processed(
+                channel_id,
+                video['id'],
+                video,
+                summary=summary,
+                email_sent=email_sent
+            )
         
         result['new_videos_count'] += 1
         result['processed_videos'].append({
@@ -251,14 +303,15 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
     return result
 
 
-def test_components(youtube_client, transcript_fetcher, ai_summarizer, 
-                   email_sender, data_store):
+def test_components(youtube_client, transcript_fetcher, downsub_fetcher,
+                   ai_summarizer, email_sender, data_store):
     """Test all components."""
     logger.info("Testing components...")
-    
+
     results = {
         'youtube_api': False,
         'transcript_api': False,
+        'downsub_api': False,
         'gemini_api': False,
         'gmail_smtp': False,
         'data_store': False
@@ -279,7 +332,16 @@ def test_components(youtube_client, transcript_fetcher, ai_summarizer,
         logger.info(f"Transcript API: {'OK' if results['transcript_api'] else 'FAILED'}")
     except Exception as e:
         logger.error(f"Transcript API test failed: {e}")
-    
+
+    # Test DownSub API
+    try:
+        # Test with a known video
+        transcript, _ = downsub_fetcher.fetch_transcript('dQw4w9WgXcQ')
+        results['downsub_api'] = transcript is not None
+        logger.info(f"DownSub API: {'OK' if results['downsub_api'] else 'FAILED'}")
+    except Exception as e:
+        logger.error(f"DownSub API test failed: {e}")
+
     # Test Gemini API
     try:
         results['gemini_api'] = ai_summarizer.test_connection()
