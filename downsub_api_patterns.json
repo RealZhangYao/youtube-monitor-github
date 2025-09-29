@@ -1,0 +1,183 @@
+[
+  {
+    "url": "https://get.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://member.downsub.com",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://member.downsub.com",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://member.downsub.com",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://get.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://get-info.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://redirect.downsub.com/binance",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://redirect.downsub.com/bybit",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://redirect.downsub.com/bingx",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://downsub.com",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://playlist.downsub.com/viki/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://editsub.com/downsub/?title=",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://get.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://get-info.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://member.downsub.com",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "[\\'\"`](https?://[^\\'\"`]*downsub[^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "https://get.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "pattern": "url\\s*:\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "foo",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "s",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "isRemoveTags",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "isEnableCountDown",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "isEnableHistory",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "fileName",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "fileName",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "favoriteLanguages",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "favoriteLanguages",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "bilingual",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "bilingual",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "translateLanguage",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "translateLanguage",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "histories",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "histories",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "url": "language",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "ajax",
+    "pattern": "get\\s*\\(\\s*[\\'\"`]([^\\'\"`]*)[\\'\"`]"
+  },
+  {
+    "config": "https://get.downsub.com/",
+    "source": "https://downsub.com/js/main.afe99b320466175589ab.js",
+    "type": "config"
+  }
+]
