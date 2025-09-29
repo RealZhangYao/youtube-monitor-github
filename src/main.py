@@ -215,8 +215,39 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
     for video in videos_to_process:
         logger.info(f"Processing video: {video['title']}")
         
-        # Get transcript
-        transcript, language = transcript_fetcher.fetch_transcript(video['id'])
+        # Get transcript - try DownSub first, then fallback to original method
+        transcript, language = None, None
+        transcript_source = "none"
+
+        if config['use_downsub']:
+            try:
+                logger.debug("Trying DownSub.com for transcript...")
+                transcript, language = downsub_fetcher.fetch_transcript(video['id'])
+                if transcript:
+                    transcript_source = "downsub"
+                    logger.info(f"✅ DownSub.com successfully fetched transcript in {language}")
+            except Exception as e:
+                logger.warning(f"DownSub.com failed with error: {e}")
+
+        # Fallback to original method if DownSub failed or not enabled
+        if not transcript:
+            try:
+                if config['use_downsub']:
+                    logger.info("DownSub failed, falling back to youtube-transcript-api...")
+                else:
+                    logger.debug("Using youtube-transcript-api...")
+                transcript, language = transcript_fetcher.fetch_transcript(video['id'])
+                if transcript:
+                    transcript_source = "youtube-transcript-api"
+                    logger.info(f"✅ YouTube Transcript API successfully fetched transcript in {language}")
+            except Exception as e:
+                logger.warning(f"YouTube Transcript API failed with error: {e}")
+
+        # Log the final result
+        if transcript:
+            logger.info(f"📄 Transcript obtained from: {transcript_source} (length: {len(transcript)} chars)")
+        else:
+            logger.warning(f"❌ No transcript available from any source")
         
         if not transcript:
             logger.warning(f"No transcript available for: {video['title']}")
@@ -234,6 +265,7 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
 链接: {video['url']}
 
 注：该视频未开启字幕功能，无法生成内容摘要。
+(已尝试: DownSub.com 和 YouTube Transcript API)
 """
             
             # Send email notification with basic info
@@ -269,9 +301,13 @@ def process_channel(channel_id, youtube_client, transcript_fetcher,
         
         # Generate summary
         summary = ai_summarizer.generate_summary(video, transcript)
-        
+
         if not summary:
             summary = f"Unable to generate summary for: {video['title']}"
+        else:
+            # Add source information to summary
+            source_note = f"\n\n📝 字幕来源: {transcript_source.replace('youtube-transcript-api', 'YouTube官方API').replace('downsub', 'DownSub.com')}"
+            summary += source_note
         
         # Send email notification
         email_sent = email_sender.send_video_notification(

@@ -17,4 +17,3 @@ urllib3<2.1
 
 # HTML parsing for DownSub integration
 beautifulsoup4==4.12.2
-lxml==4.9.3

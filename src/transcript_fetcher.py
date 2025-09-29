@@ -15,9 +15,14 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import (
     TranscriptsDisabled,
     NoTranscriptFound,
-    VideoUnavailable,
-    TooManyRequests
+    VideoUnavailable
 )
+
+# TooManyRequests might not be available in newer versions
+try:
+    from youtube_transcript_api._errors import TooManyRequests
+except ImportError:
+    TooManyRequests = Exception
 import yt_dlp
 
 logger = logging.getLogger(__name__)
