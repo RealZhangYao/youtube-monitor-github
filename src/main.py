@@ -112,7 +112,8 @@ def main():
                 data_store,
                 config['recipient_email'],
                 get_latest_only=config['get_latest'],
-                config=config
+                config=config,
+                downsub_fetcher=downsub_fetcher
             )
 
             all_results.append(result)
@@ -164,7 +165,7 @@ def main():
 
 def process_channel(channel_id, youtube_client, transcript_fetcher,
                    ai_summarizer, email_sender, data_store, recipient_email,
-                   get_latest_only=False, config=None):
+                   get_latest_only=False, config=None, downsub_fetcher=None):
     """Process a single YouTube channel."""
     # Set default config if not provided
     if config is None:
