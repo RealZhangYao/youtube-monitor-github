@@ -8,9 +8,10 @@ It provides an alternative to youtube-transcript-api with better reliability.
 import logging
 import time
 import json
+import re
+import urllib.parse
 from typing import List, Dict, Any, Optional, Tuple
 import requests
-from urllib.parse import quote
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +78,12 @@ class DownSubFetcher:
 
     def _get_subtitle_info(self, video_url: str) -> Optional[List[Dict]]:
         """
-        Get available subtitle information from DownSub.com using the discovered API.
+        Get available subtitle information from DownSub.com using comprehensive approach.
+
+        This method implements multiple strategies based on reverse engineering:
+        1. Direct API call to get basic info
+        2. Simulation of known working download URLs
+        3. Fallback to web scraping
 
         Args:
             video_url: YouTube video URL
@@ -86,10 +92,38 @@ class DownSubFetcher:
             List of available subtitle tracks or None
         """
         try:
-            # Use the discovered working API endpoint
+            # Strategy 1: Use the discovered API endpoint to get basic structure
+            logger.debug("Strategy 1: Checking DownSub API for basic info...")
+            api_result = self._check_downsub_api(video_url)
+
+            # Strategy 2: Try to use known working download patterns
+            logger.debug("Strategy 2: Attempting direct subtitle access...")
+            direct_result = self._try_direct_subtitle_access(video_url)
+
+            if direct_result:
+                logger.info("✅ Found subtitles via direct access method")
+                return direct_result
+
+            # Strategy 3: If no direct success, try API-guided approach
+            if api_result and api_result.get('urlSubtitle'):
+                logger.debug("Strategy 3: Using API-guided subtitle detection...")
+                guided_result = self._try_api_guided_access(video_url, api_result)
+                if guided_result:
+                    return guided_result
+
+            # Strategy 4: Fallback to web scraping
+            logger.debug("Strategy 4: Falling back to web scraping...")
+            return self._scrape_subtitle_info(video_url)
+
+        except Exception as e:
+            logger.error(f"Error in comprehensive subtitle detection: {e}")
+            return None
+
+    def _check_downsub_api(self, video_url: str) -> Optional[Dict]:
+        """Check DownSub API for basic video info"""
+        try:
             api_url = "https://get.downsub.com/"
 
-            # Update headers to match working request
             self.session.headers.update({
                 'Referer': 'https://downsub.com/',
                 'Origin': 'https://downsub.com',
@@ -98,63 +132,163 @@ class DownSubFetcher:
                 'X-Requested-With': 'XMLHttpRequest'
             })
 
-            logger.debug(f"Calling DownSub API: {api_url}")
-
-            # Try the API call that we know works
             payload = {'url': video_url}
             response = self.session.post(api_url, json=payload, timeout=30)
-            logger.debug(f"DownSub API response status: {response.status_code}")
 
             if response.status_code == 200:
                 try:
                     result = response.json()
                     logger.debug(f"DownSub API response: {result}")
 
-                    # Check for subtitles in the response
+                    # Check if API returns actual subtitles
                     subtitles = result.get('subtitles', [])
                     auto_subtitles = result.get('subtitlesAutoTrans', [])
 
-                    all_subtitles = []
+                    if subtitles or auto_subtitles:
+                        logger.info("API returned subtitle data directly")
+                        all_subtitles = []
 
-                    # Process manual subtitles
-                    for sub in subtitles:
-                        all_subtitles.append({
-                            'url': sub.get('url'),
-                            'language': sub.get('lang', 'unknown'),
-                            'description': sub.get('name', 'Manual subtitle'),
-                            'auto_generated': False
-                        })
+                        for sub in subtitles:
+                            all_subtitles.append({
+                                'url': sub.get('url'),
+                                'language': sub.get('lang', 'unknown'),
+                                'description': sub.get('name', 'Manual subtitle'),
+                                'auto_generated': False
+                            })
 
-                    # Process auto-generated subtitles
-                    for sub in auto_subtitles:
-                        all_subtitles.append({
-                            'url': sub.get('url'),
-                            'language': sub.get('lang', 'unknown'),
-                            'description': sub.get('name', 'Auto-generated subtitle'),
-                            'auto_generated': True
-                        })
+                        for sub in auto_subtitles:
+                            all_subtitles.append({
+                                'url': sub.get('url'),
+                                'language': sub.get('lang', 'unknown'),
+                                'description': sub.get('name', 'Auto-generated subtitle'),
+                                'auto_generated': True
+                            })
 
-                    if all_subtitles:
-                        logger.info(f"DownSub API found {len(all_subtitles)} subtitle tracks")
                         return all_subtitles
-                    else:
-                        logger.debug("DownSub API returned no subtitles")
-                        # If API returns no subtitles, try the fallback web scraping method
-                        return self._scrape_subtitle_info(video_url)
+
+                    return result  # Return for potential guided access
 
                 except Exception as e:
-                    logger.error(f"Error parsing DownSub API response: {e}")
-                    return None
+                    logger.debug(f"Error parsing API response: {e}")
 
             else:
-                logger.warning(f"DownSub API returned status {response.status_code}")
-                # Fallback to web scraping if API fails
-                return self._scrape_subtitle_info(video_url)
+                logger.debug(f"API returned {response.status_code}")
 
         except Exception as e:
-            logger.error(f"Error calling DownSub API: {e}")
-            # Fallback to web scraping method
-            return self._scrape_subtitle_info(video_url)
+            logger.debug(f"API check failed: {e}")
+
+        return None
+
+    def _try_direct_subtitle_access(self, video_url: str) -> Optional[List[Dict]]:
+        """
+        Try to access subtitles using patterns discovered from working examples.
+
+        Based on analysis of working download.subtitle.to URLs.
+        """
+        try:
+            # Extract video ID from URL
+            import re
+            video_id_match = re.search(r'(?:v=|youtu\.be/)([a-zA-Z0-9_-]{11})', video_url)
+            if not video_id_match:
+                return None
+
+            video_id = video_id_match.group(1)
+            logger.debug(f"Extracted video ID: {video_id}")
+
+            # Try multiple approaches to access subtitles for this video
+            access_attempts = [
+                # Attempt 1: Try to construct a download.subtitle.to URL
+                # This is speculative but based on the pattern we observed
+                f"https://download.subtitle.to/?url={video_id}&type=txt",
+                f"https://download.subtitle.to/?video={video_id}&format=txt",
+
+                # Attempt 2: Try DownSub's URL pattern with this video
+                f"https://downsub.com/?url={urllib.parse.quote(video_url)}",
+            ]
+
+            for attempt_url in access_attempts:
+                logger.debug(f"Trying direct access: {attempt_url}")
+
+                try:
+                    # Use appropriate headers for each domain
+                    headers = {}
+                    if 'download.subtitle.to' in attempt_url:
+                        headers.update({
+                            'Referer': 'https://downsub.com/',
+                            'Accept': 'text/plain,text/html,*/*'
+                        })
+
+                    self.session.headers.update(headers)
+
+                    response = self.session.get(attempt_url, timeout=30)
+
+                    if response.status_code == 200:
+                        content = response.text
+
+                        # Check if this looks like subtitle content
+                        if self._is_subtitle_content(content):
+                            logger.info(f"✅ Found subtitle via direct access: {attempt_url}")
+
+                            # Return as a subtitle track
+                            return [{
+                                'url': attempt_url,
+                                'language': 'zh' if any(ord(char) > 127 for char in content[:1000]) else 'en',
+                                'description': 'Direct access subtitle',
+                                'auto_generated': False,
+                                'content': content  # Include content directly
+                            }]
+
+                except Exception as e:
+                    logger.debug(f"Direct access attempt failed: {e}")
+                    continue
+
+        except Exception as e:
+            logger.debug(f"Direct access method failed: {e}")
+
+        return None
+
+    def _try_api_guided_access(self, video_url: str, api_result: Dict) -> Optional[List[Dict]]:
+        """Try to use API result to guide subtitle access"""
+        try:
+            base_url = api_result.get('urlSubtitle', 'https://download.subtitle.to/')
+
+            if not base_url.endswith('/'):
+                base_url += '/'
+
+            # Try to construct download URLs based on API guidance
+            # This would need the actual encryption key/method from DownSub
+            # For now, we'll try basic patterns
+
+            logger.debug(f"Attempting API-guided access with base: {base_url}")
+
+            # This is where we would implement the actual URL construction
+            # if we had the encryption key. For now, return None to fall back.
+
+        except Exception as e:
+            logger.debug(f"API-guided access failed: {e}")
+
+        return None
+
+    def _is_subtitle_content(self, content: str) -> bool:
+        """Check if content appears to be subtitle data"""
+        if not content or len(content) < 50:
+            return False
+
+        # Check for common subtitle patterns
+        subtitle_indicators = [
+            # SRT format
+            re.search(r'\d+\n\d{2}:\d{2}:\d{2},\d{3} --> \d{2}:\d{2}:\d{2},\d{3}', content),
+            # VTT format
+            content.strip().startswith('WEBVTT'),
+            # General timestamp patterns
+            re.search(r'\d{1,2}:\d{2}:\d{2}', content),
+            # Chinese characters (indicating content, not just HTML)
+            len([c for c in content[:1000] if ord(c) > 127]) > 20,
+            # Common subtitle words
+            any(word in content.lower() for word in ['subtitle', '字幕', 'caption'])
+        ]
+
+        return any(subtitle_indicators)
 
     def _scrape_subtitle_info(self, video_url: str) -> Optional[List[Dict]]:
         """
@@ -383,7 +517,7 @@ class DownSubFetcher:
 
     def _download_subtitle(self, subtitle_info: Dict) -> Optional[str]:
         """
-        Download subtitle content from the given URL.
+        Download subtitle content from the given URL or extract from embedded content.
 
         Args:
             subtitle_info: Subtitle track information
@@ -392,27 +526,72 @@ class DownSubFetcher:
             Subtitle content as text or None
         """
         try:
-            url = subtitle_info['url']
-            response = self.session.get(url, timeout=30)
+            # Check if content is already embedded (from direct access)
+            if 'content' in subtitle_info:
+                logger.debug("Using embedded subtitle content")
+                content = subtitle_info['content']
+            else:
+                # Download from URL
+                url = subtitle_info['url']
+                logger.debug(f"Downloading subtitle from: {url}")
 
-            if response.status_code != 200:
-                logger.error(f"Failed to download subtitle: HTTP {response.status_code}")
+                response = self.session.get(url, timeout=30)
+
+                if response.status_code != 200:
+                    logger.error(f"Failed to download subtitle: HTTP {response.status_code}")
+                    return None
+
+                content = response.text
+
+            # Convert subtitle content to plain text based on format
+            if not content:
                 return None
 
-            # Convert subtitle content to plain text
-            content = response.text
-
-            # If it's SRT format, extract just the text
-            if url.endswith('.srt'):
+            # Determine format and process accordingly
+            if subtitle_info.get('url', '').endswith('.srt') or self._is_srt_format(content):
                 content = self._srt_to_text(content)
-            elif url.endswith('.vtt'):
+            elif subtitle_info.get('url', '').endswith('.vtt') or content.strip().startswith('WEBVTT'):
                 content = self._vtt_to_text(content)
+            else:
+                # For plain text or other formats, clean up basic formatting
+                content = self._clean_subtitle_text(content)
 
             return content
 
         except Exception as e:
-            logger.error(f"Error downloading subtitle: {e}")
+            logger.error(f"Error processing subtitle: {e}")
             return None
+
+    def _is_srt_format(self, content: str) -> bool:
+        """Check if content is in SRT format"""
+        return bool(re.search(r'\d+\n\d{2}:\d{2}:\d{2},\d{3} --> \d{2}:\d{2}:\d{2},\d{3}', content))
+
+    def _clean_subtitle_text(self, content: str) -> str:
+        """Clean up plain text subtitle content"""
+        try:
+            import re
+
+            # Remove any HTML tags that might be present
+            content = re.sub(r'<[^>]+>', '', content)
+
+            # Clean up excessive whitespace
+            content = re.sub(r'\n\s*\n', '\n', content)
+            content = re.sub(r'\s+', ' ', content)
+
+            # Split into lines and clean each line
+            lines = content.split('\n')
+            cleaned_lines = []
+
+            for line in lines:
+                line = line.strip()
+                if line and not line.isdigit():  # Skip empty lines and standalone numbers
+                    cleaned_lines.append(line)
+
+            return '\n'.join(cleaned_lines)
+
+        except Exception as e:
+            logger.error(f"Error cleaning subtitle text: {e}")
+            return content
 
     def _srt_to_text(self, srt_content: str) -> str:
         """
