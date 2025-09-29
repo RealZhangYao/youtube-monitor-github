@@ -1,13 +1,16 @@
 {
-  "timestamp": "2025-09-29T05:24:27.456670+00:00",
+  "timestamp": "2025-09-29T05:57:13.235739+00:00",
   "total_new_videos": 0,
   "channels_processed": 1,
+  "target_username": "lidangzzz",
+  "use_downsub": true,
   "results": [
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
       "new_videos_count": 0,
-      "processed_videos": []
+      "processed_videos": [],
+      "get_latest_only": false
     }
   ]
 }
