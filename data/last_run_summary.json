@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-29T06:08:24.996985+00:00",
+  "timestamp": "2025-09-29T06:22:25.613833+00:00",
   "total_new_videos": 0,
   "channels_processed": 1,
   "target_username": "lidangzzz",
@@ -7,10 +7,8 @@
   "results": [
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
-      "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
-      "get_latest_only": false
+      "error": "name 'config' is not defined",
+      "new_videos_count": 0
     }
   ]
 }
