@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-09-29T05:57:13.235739+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2025-09-29T05:58:34.742962+00:00",
+  "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,9 +8,15 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
-      "get_latest_only": false
+      "new_videos_count": 1,
+      "processed_videos": [
+        {
+          "video_id": "zsTLDSibZnE",
+          "title": "\u7acb\u515a\u81ed\u9a82YouTube\u7f51\u53cb\uff1a\u4e0d\u5b66\u8ba1\u7b97\u673a\u4e13\u4e1a\uff0c\u6709\u4ec0\u4e48\u8138\u5403\u79d1\u6280\u4e92\u8054\u7f51\u8fd9\u7897\u996d\uff1f\u4e3a\u4ec0\u4e48\u73af\u5883/\u6750\u6599/\u673a\u68b0/\u7535\u6c14/\u80fd\u52a8\u8fd9\u4e9b\u4f20\u7edf\u5de5\u79d1\uff0c\u975e\u8981\u5b66\u7f16\u7a0b\u6df7\u8fdb\u79d1\u6280\u4e92\u8054\u7f51\uff1f",
+          "summary": "\u65e0\u5b57\u5e55\uff0c\u4ec5\u5305\u542b\u57fa\u672c\u4fe1\u606f"
+        }
+      ],
+      "get_latest_only": true
     }
   ]
 }
