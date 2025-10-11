@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-10-10T12:27:36.667404+00:00",
-  "total_new_videos": 1,
+  "timestamp": "2025-10-11T00:57:35.239410+00:00",
+  "total_new_videos": 0,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,14 +8,8 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 1,
-      "processed_videos": [
-        {
-          "video_id": "9evUoAvnFW8",
-          "title": "\u751f\u7269\u533b\u5b66\u9886\u57df\uff0c\u666e\u901a\u4eba\u80fd\u8fdb\u5165VC\u884c\u4e1a\u5417\uff1f",
-          "summary": "I am unable to directly access external websites or download subtitles from YouTube videos. Therefore, I cannot fulfill your request to analyze the provided transcript and generate the summary.\n\nTo ge..."
-        }
-      ],
+      "new_videos_count": 0,
+      "processed_videos": [],
       "get_latest_only": false
     }
   ]
