@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-10-12T12:23:08.890499+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2025-10-13T01:04:25.525336+00:00",
+  "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,8 +8,14 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
+      "new_videos_count": 1,
+      "processed_videos": [
+        {
+          "video_id": "X3hTl9nbLT0",
+          "title": "\u9884\u5236\u83dc\u5230\u5e95\u662f\u5982\u4f55\u8bde\u751f\u7684\uff1f",
+          "summary": "Unfortunately, I am unable to directly access and analyze the content of the YouTube video through the provided URL because I need JavaScript to function properly with DownSub (which requires Javascri..."
+        }
+      ],
       "get_latest_only": false
     }
   ]
