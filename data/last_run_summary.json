@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-13T01:04:25.525336+00:00",
+  "timestamp": "2025-10-13T12:27:27.099575+00:00",
   "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
@@ -11,9 +11,9 @@
       "new_videos_count": 1,
       "processed_videos": [
         {
-          "video_id": "X3hTl9nbLT0",
-          "title": "\u9884\u5236\u83dc\u5230\u5e95\u662f\u5982\u4f55\u8bde\u751f\u7684\uff1f",
-          "summary": "Unfortunately, I am unable to directly access and analyze the content of the YouTube video through the provided URL because I need JavaScript to function properly with DownSub (which requires Javascri..."
+          "video_id": "dct9mkCfy40",
+          "title": "\u7acb\u515a\u6df1\u5ea6\u5256\u6790\uff1a\u8ba1\u7b97\u673a\u672c\u79d1\u751f\uff0c\u5982\u4f55\u89c4\u5212\u5927\u5b66\u56db\u5e74\uff1f\u4e3a\u4ec0\u4e48\u5927\u6a21\u578b\u63a8\u7406\u4f18\u5316\u662f\u5929\u5751\uff1f\u4e3a\u4ec0\u4e48\u5343\u4e07\u522b\u4fee\u53cc\u5b66\u4f4d\uff1f\u6570\u5b66\u4e13\u4e1a\u4e3a\u4ec0\u4e48\u662f\u5783\u573e\uff1f\u6df1\u9677\u505a\u9898\u5bb6\u601d\u7ef4\uff0c\u5982\u4f55\u627e\u5230\u81ea\u5df1\u5174\u8da3\u70b9\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u6df1\u5ea6\u5256\u6790\uff1a\u8ba1\u7b97\u673a\u672c\u79d1\u751f\uff0c\u5982\u4f55\u89c4\u5212\u5927\u5b66\u56db\u5e74\uff1f\u4e3a\u4ec0\u4e48\u5927\u6a21\u578b\u63a8\u7406\u4f18\u5316\u662f\u5929\u5751\uff1f\u4e3a\u4ec0\u4e48\u5343\u4e07\u522b\u4fee\u53cc\u5b66\u4f4d\uff1f\u6570\u5b66\u4e13\u4e1a\u4e3a\u4ec0\u4e48\u662f\u5783\u573e\uff1f\u6df1\u9677\u505a\u9898\u5bb6\u601d\u7ef4\uff0c\u5982\u4f55\u627e\u5230\u81ea\u5df1\u5174\u8da3\u70b9\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 27:37\n  - Unable to generate AI summary due to..."
         }
       ],
       "get_latest_only": false
