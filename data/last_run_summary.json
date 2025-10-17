@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-10-17T01:00:59.692125+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2025-10-17T12:27:34.547095+00:00",
+  "total_new_videos": 2,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,8 +8,19 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
+      "new_videos_count": 2,
+      "processed_videos": [
+        {
+          "video_id": "P-bV1S5XC-o",
+          "title": "\u7acb\u515a\u89e3\u7b54\u4e16\u95f4\u4e07\u7269\uff1a2026\u5e74\u623f\u4ef7\u4f1a\u89e6\u5e95\u5417\uff1f\u4e3a\u4ec0\u4e48\u56fd\u5185\u522b\u5885\u8c6a\u5b85\u90fd\u662f\u5783\u573e\u8d44\u4ea7\uff1f\u4e8c\u624b\u522b\u5885\u4e3a\u4f55\u4ef7\u683c\u5d29\u76d8\uff1f\u4e3a\u4ec0\u4e48\u65e0\u4eba\u9a7e\u9a76\u51fa\u79df\u5728\u4e2d\u56fd\u548c\u7f8e\u56fd\u90fd\u65e0\u6cd5\u94fa\u5f00\uff1fAI infra\u4e3a\u4ec0\u4e48\u662f\u4e2a\u7eaf\u5783\u573e\u65b9\u5411\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u89e3\u7b54\u4e16\u95f4\u4e07\u7269\uff1a2026\u5e74\u623f\u4ef7\u4f1a\u89e6\u5e95\u5417\uff1f\u4e3a\u4ec0\u4e48\u56fd\u5185\u522b\u5885\u8c6a\u5b85\u90fd\u662f\u5783\u573e\u8d44\u4ea7\uff1f\u4e8c\u624b\u522b\u5885\u4e3a\u4f55\u4ef7\u683c\u5d29\u76d8\uff1f\u4e3a\u4ec0\u4e48\u65e0\u4eba\u9a7e\u9a76\u51fa\u79df\u5728\u4e2d\u56fd\u548c\u7f8e\u56fd\u90fd\u65e0\u6cd5\u94fa\u5f00\uff1fAI infra\u4e3a\u4ec0\u4e48\u662f\u4e2a\u7eaf\u5783\u573e\u65b9\u5411\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 2:00:59\n  - Unable to generate AI s..."
+        },
+        {
+          "video_id": "vc8kmwY-2_Y",
+          "title": "\u7acb\u515a\u89e3\u7b54YouTube\u4e16\u95f4\u4e07\u7269\u7b2c\u4e09\u671f\uff1a\u5f53\u4eca\u5e74\u8f7b\u4eba\u8fd8\u6709\u54ea\u4e9b\u51fa\u8def\uff1f\u4e09\u672c\u5927\u4e13\u6bd5\u4e1a\u751f\u6709\u54ea\u4e9b\u597d\u7684\u673a\u4f1a\u548c\u65b9\u5411\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u89e3\u7b54YouTube\u4e16\u95f4\u4e07\u7269\u7b2c\u4e09\u671f\uff1a\u5f53\u4eca\u5e74\u8f7b\u4eba\u8fd8\u6709\u54ea\u4e9b\u51fa\u8def\uff1f\u4e09\u672c\u5927\u4e13\u6bd5\u4e1a\u751f\u6709\u54ea\u4e9b\u597d\u7684\u673a\u4f1a\u548c\u65b9\u5411\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 56:36\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Pl..."
+        }
+      ],
       "get_latest_only": false
     }
   ]
