@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-10-19T01:08:41.555862+00:00",
-  "total_new_videos": 2,
+  "timestamp": "2025-10-19T12:23:50.414019+00:00",
+  "total_new_videos": 0,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,19 +8,8 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 2,
-      "processed_videos": [
-        {
-          "video_id": "7IeIV2ZFZ60",
-          "title": "\u6768\u632f\u5b81\u901d\u4e16\uff01\u7acb\u515a\u5e26\u4f60\u603b\u7ed3\u6768\u632f\u5b81\u7684\u6210\u529f\u4eba\u751f\uff01\u5b87\u79f0\u4e0d\u5b88\u6052\u3001Yang-Mills\u7406\u8bba\u662f\u5982\u4f55\u8bde\u751f\u7684\uff1f\u5982\u4f55\u505a\u51fa\u4e00\u6d41\u9876\u7ea7\u5b66\u672f\u6210\u679c\uff1f\u6768\u632f\u5b81\u3001\u674e\u653f\u9053\u3001\u9648\u7701\u8eab\u8fd9\u4e9b\u9876\u7ea7\u79d1\u5b66\u5bb6\u662f\u5982\u4f55\u8bde\u751f\u7684\uff1f",
-          "summary": "\n\u2022 Main Topic: \u6768\u632f\u5b81\u901d\u4e16\uff01\u7acb\u515a\u5e26\u4f60\u603b\u7ed3\u6768\u632f\u5b81\u7684\u6210\u529f\u4eba\u751f\uff01\u5b87\u79f0\u4e0d\u5b88\u6052\u3001Yang-Mills\u7406\u8bba\u662f\u5982\u4f55\u8bde\u751f\u7684\uff1f\u5982\u4f55\u505a\u51fa\u4e00\u6d41\u9876\u7ea7\u5b66\u672f\u6210\u679c\uff1f\u6768\u632f\u5b81\u3001\u674e\u653f\u9053\u3001\u9648\u7701\u8eab\u8fd9\u4e9b\u9876\u7ea7\u79d1\u5b66\u5bb6\u662f\u5982\u4f55\u8bde\u751f\u7684\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 29:54\n  - Unable to generate AI summary..."
-        },
-        {
-          "video_id": "7skzCMGj3rA",
-          "title": "\u7acb\u515aYouTube\u89e3\u7b54\u4e16\u95f4\u4e07\u7269\u7b2c\u56db\u671f\uff1a2025\u5e74\u666e\u901a\u4eba\u8fd8\u80fd\u8f6c\u7801\u6210\u529f\u5417\uff1f",
-          "summary": "\n\u2022 Main Topic: \u7acb\u515aYouTube\u89e3\u7b54\u4e16\u95f4\u4e07\u7269\u7b2c\u56db\u671f\uff1a2025\u5e74\u666e\u901a\u4eba\u8fd8\u80fd\u8f6c\u7801\u6210\u529f\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 47:10\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the..."
-        }
-      ],
+      "new_videos_count": 0,
+      "processed_videos": [],
       "get_latest_only": false
     }
   ]
