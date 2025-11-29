@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-11-28T12:27:59.315379+00:00",
-  "total_new_videos": 1,
+  "timestamp": "2025-11-29T01:03:21.994158+00:00",
+  "total_new_videos": 0,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,14 +8,8 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 1,
-      "processed_videos": [
-        {
-          "video_id": "Uy5mPTMrM08",
-          "title": "\u201c\u672a\u5a5a\u59bb\u662f\u8001\u5e08\uff0c\u903c\u6211\u4e70300\u4e07\u7684\u5a5a\u623f\uff0c\u6211\u8be5\u600e\u4e48\u529e\uff1f\u201d",
-          "summary": "\n\u2022 Main Topic: \u201c\u672a\u5a5a\u59bb\u662f\u8001\u5e08\uff0c\u903c\u6211\u4e70300\u4e07\u7684\u5a5a\u623f\uff0c\u6211\u8be5\u600e\u4e48\u529e\uff1f\u201d\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 43:10\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video di..."
-        }
-      ],
+      "new_videos_count": 0,
+      "processed_videos": [],
       "get_latest_only": false
     }
   ]
