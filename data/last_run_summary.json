@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-12-05T12:29:05.519434+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2025-12-06T01:03:30.146802+00:00",
+  "total_new_videos": 3,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,8 +8,24 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
+      "new_videos_count": 3,
+      "processed_videos": [
+        {
+          "video_id": "XbXZyWgC38w",
+          "title": "\u5317\u4eac\u623f\u4ea7\u5d29\u76d8\uff0c\u666e\u901a\u4eba\u8be5\u5356\u623f\u5417\uff1f",
+          "summary": "\n\u2022 Main Topic: \u5317\u4eac\u623f\u4ea7\u5d29\u76d8\uff0c\u666e\u901a\u4eba\u8be5\u5356\u623f\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 22:03\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video directly for ..."
+        },
+        {
+          "video_id": "2ksfzTQrw3g",
+          "title": "\u53f0\u6e7e\u9876\u7ea7\u5b66\u9738\u5e94\u8be5\u9009\u62e9\u54ea\u91cc\u8bfb\u535a\u58eb\uff1f\u5927\u9646\u3001\u53f0\u6e7e\u3001\u7f8e\u56fd\uff0c\u54ea\u4e2a\u673a\u4f1a\u66f4\u591a\uff1f",
+          "summary": "\n\u2022 Main Topic: \u53f0\u6e7e\u9876\u7ea7\u5b66\u9738\u5e94\u8be5\u9009\u62e9\u54ea\u91cc\u8bfb\u535a\u58eb\uff1f\u5927\u9646\u3001\u53f0\u6e7e\u3001\u7f8e\u56fd\uff0c\u54ea\u4e2a\u673a\u4f1a\u66f4\u591a\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 21:12\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the vi..."
+        },
+        {
+          "video_id": "bOklBd4Y8PY",
+          "title": "\u6c42\u4f60\u4eec\u4e86\uff0c\u522b\u51fa\u56fd\u8f6c\u7801\u4e86",
+          "summary": "\n\u2022 Main Topic: \u6c42\u4f60\u4eec\u4e86\uff0c\u522b\u51fa\u56fd\u8f6c\u7801\u4e86\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 42:31\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video directly for full..."
+        }
+      ],
       "get_latest_only": false
     }
   ]
