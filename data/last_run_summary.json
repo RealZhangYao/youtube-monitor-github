@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-12T01:08:43.277280+00:00",
+  "timestamp": "2025-12-12T12:29:25.362829+00:00",
   "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
@@ -11,9 +11,9 @@
       "new_videos_count": 1,
       "processed_videos": [
         {
-          "video_id": "fF8DTGbzWWQ",
-          "title": "\u6df1\u5ea6\u5206\u6790\u201c\u5546\u4e1a\u9a97\u5c40\u201d\uff1a\u5143\u5b87\u5b99 \u5177\u8eab\u667a\u80fd \u91cf\u5b50\u8ba1\u7b97 \u8111\u673a\u63a5\u53e3 \u53ef\u63a7\u6838\u805a\u53d8",
-          "summary": "\n\u2022 Main Topic: \u6df1\u5ea6\u5206\u6790\u201c\u5546\u4e1a\u9a97\u5c40\u201d\uff1a\u5143\u5b87\u5b99 \u5177\u8eab\u667a\u80fd \u91cf\u5b50\u8ba1\u7b97 \u8111\u673a\u63a5\u53e3 \u53ef\u63a7\u6838\u805a\u53d8\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 56:53\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the..."
+          "video_id": "NAdO_GTn7lE",
+          "title": "\u7acb\u515aYoutube\u76f4\u64ad \u7b2c\u4e03\u671f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515aYoutube\u76f4\u64ad \u7b2c\u4e03\u671f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 0:00\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video directly for f..."
         }
       ],
       "get_latest_only": false
