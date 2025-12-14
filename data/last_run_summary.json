@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-12-13T12:26:18.549617+00:00",
-  "total_new_videos": 2,
+  "timestamp": "2025-12-14T01:13:23.865278+00:00",
+  "total_new_videos": 0,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,19 +8,8 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 2,
-      "processed_videos": [
-        {
-          "video_id": "SDkrc5kvs1U",
-          "title": "\u7acb\u515a\u81ed\u9a82\u540d\u6821\u673a\u5668\u4eba\u535a\u58eb\uff1a\u5783\u573e\u9886\u57df\uff0c\u6ca1\u6709\u5de5\u4f5c\uff0c\u6bd4\u6570\u5b66\u7269\u7406\u751f\u7269\u8fd8\u5751\uff01",
-          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u81ed\u9a82\u540d\u6821\u673a\u5668\u4eba\u535a\u58eb\uff1a\u5783\u573e\u9886\u57df\uff0c\u6ca1\u6709\u5de5\u4f5c\uff0c\u6bd4\u6570\u5b66\u7269\u7406\u751f\u7269\u8fd8\u5751\uff01\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 23:00\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the vi..."
-        },
-        {
-          "video_id": "YuPOF4sw93c",
-          "title": "\u53bf\u57ce\u623f\u4ef7\u5d29\u76d8\u4e86\u5417\uff1f\u4e3a\u4ec0\u4e48\u53bf\u57ce\u623f\u4ef7\u770b\u4e0a\u53bb\u6ca1\u8dcc\uff0c\u4f46\u6c38\u8fdc\u5356\u4e0d\u51fa\u53bb\uff1f\u53bf\u57ce\u8fd8\u6709\u8c01\u80fd\u63a5\u76d8\u623f\u5730\u4ea7\uff1f",
-          "summary": "\n\u2022 Main Topic: \u53bf\u57ce\u623f\u4ef7\u5d29\u76d8\u4e86\u5417\uff1f\u4e3a\u4ec0\u4e48\u53bf\u57ce\u623f\u4ef7\u770b\u4e0a\u53bb\u6ca1\u8dcc\uff0c\u4f46\u6c38\u8fdc\u5356\u4e0d\u51fa\u53bb\uff1f\u53bf\u57ce\u8fd8\u6709\u8c01\u80fd\u63a5\u76d8\u623f\u5730\u4ea7\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 23:25\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please wa..."
-        }
-      ],
+      "new_videos_count": 0,
+      "processed_videos": [],
       "get_latest_only": false
     }
   ]
