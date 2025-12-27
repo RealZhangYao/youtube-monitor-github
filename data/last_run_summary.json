@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-12-26T12:29:00.906369+00:00",
-  "total_new_videos": 2,
+  "timestamp": "2025-12-27T01:07:05.318688+00:00",
+  "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,17 +8,12 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 2,
+      "new_videos_count": 1,
       "processed_videos": [
         {
-          "video_id": "g3zGm9J_mNg",
-          "title": "\u7acb\u515a\u95f2\u804a\u623f\uff1a\u6211\u7684\u60f3\u6cd5\u662f\u5982\u4f55\u4e0eGoogle\u3001Anthropic\u3001a16z\u5927\u649e\u8f66\u7684\uff1f\u540d\u6821\u8ba1\u7b97\u673a\u535a\u58eb\u8981\u4e0d\u8981\u53bbPE/VC\uff1f\u5982\u4f55\u8bc4\u4ef7nvidia\u6536\u8d2dgroq\uff1f",
-          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u95f2\u804a\u623f\uff1a\u6211\u7684\u60f3\u6cd5\u662f\u5982\u4f55\u4e0eGoogle\u3001Anthropic\u3001a16z\u5927\u649e\u8f66\u7684\uff1f\u540d\u6821\u8ba1\u7b97\u673a\u535a\u58eb\u8981\u4e0d\u8981\u53bbPE/VC\uff1f\u5982\u4f55\u8bc4\u4ef7nvidia\u6536\u8d2dgroq\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 42:37\n  - Unable to generate AI summary due to te..."
-        },
-        {
-          "video_id": "SuYtwDXob1Y",
-          "title": "\u7acb\u515a\u89e3\u7b54\u4e16\u95f4\u4e07\u7269\u7b2c\u516b\u671f\uff1a\u5dee\u70b9\u88ab\u6c14\u75af\uff01\u4e2d\u56fd\u7684SpaceX\u4f1a\u6210\u529f\u5417\uff1f\u4e3a\u4ec0\u4e48\u4e2d\u533b\u5927\u884c\u5176\u9053\uff1f",
-          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u89e3\u7b54\u4e16\u95f4\u4e07\u7269\u7b2c\u516b\u671f\uff1a\u5dee\u70b9\u88ab\u6c14\u75af\uff01\u4e2d\u56fd\u7684SpaceX\u4f1a\u6210\u529f\u5417\uff1f\u4e3a\u4ec0\u4e48\u4e2d\u533b\u5927\u884c\u5176\u9053\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 20:57\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please wa..."
+          "video_id": "vI7sb6a7EY0",
+          "title": "\u7acb\u515aYoutube\u76f4\u64ad \u7b2c011\u671f \u666e\u901a\u4eba\u8be5\u5982\u4f55\u517b\u8001\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515aYoutube\u76f4\u64ad \u7b2c011\u671f \u666e\u901a\u4eba\u8be5\u5982\u4f55\u517b\u8001\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 1:26:27\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video..."
         }
       ],
       "get_latest_only": false
