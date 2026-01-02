@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-01-02T01:10:57.482336+00:00",
-  "total_new_videos": 2,
+  "timestamp": "2026-01-02T12:29:10.119629+00:00",
+  "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,17 +8,12 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 2,
+      "new_videos_count": 1,
       "processed_videos": [
         {
-          "video_id": "lQX2YiNCN04",
-          "title": "\u4e2d\u56fd\u548c\u5168\u7403\u54ea\u4e9b\u57ce\u5e02\u6700\u9002\u5408\u517b\u8001\uff1f\u8001\u5e74\u4eba\u5982\u4f55\u89e3\u51b3\u533b\u4fdd\uff1f\u4e2d\u56fd\u4eba\u7684\u5168\u7403\u517b\u8001\u6307\u5357",
-          "summary": "\n\u2022 Main Topic: \u4e2d\u56fd\u548c\u5168\u7403\u54ea\u4e9b\u57ce\u5e02\u6700\u9002\u5408\u517b\u8001\uff1f\u8001\u5e74\u4eba\u5982\u4f55\u89e3\u51b3\u533b\u4fdd\uff1f\u4e2d\u56fd\u4eba\u7684\u5168\u7403\u517b\u8001\u6307\u5357\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 46:17\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the..."
-        },
-        {
-          "video_id": "JTS9vUzCUaE",
-          "title": "2026\u5e74\uff0c\u4e2d\u56fd\u5b8f\u89c2\u7ecf\u6d4e\u80fd\u6446\u8131\u901a\u7f29\u5417\uff1f",
-          "summary": "\n\u2022 Main Topic: 2026\u5e74\uff0c\u4e2d\u56fd\u5b8f\u89c2\u7ecf\u6d4e\u80fd\u6446\u8131\u901a\u7f29\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 44:43\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video directly ..."
+          "video_id": "2cJsEJGNG94",
+          "title": "\u7acb\u515aYoutube\u76f4\u64ad012 2026\u5e74\u53ef\u4ee5\u4e70\u623f\u4e86\u5417\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515aYoutube\u76f4\u64ad012 2026\u5e74\u53ef\u4ee5\u4e70\u623f\u4e86\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 3:35:40\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video..."
         }
       ],
       "get_latest_only": false
