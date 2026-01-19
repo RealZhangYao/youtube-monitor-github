@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-01-19T01:15:34.594634+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2026-01-19T12:34:55.965502+00:00",
+  "total_new_videos": 2,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,8 +8,19 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
+      "new_videos_count": 2,
+      "processed_videos": [
+        {
+          "video_id": "jUlFoeSxMQE",
+          "title": "\u4e3a\u4ec0\u4e48\u522b\u78b0\u673a\u5668\u4eba\u548c\u5177\u8eab\u667a\u80fd\uff1fAI\u6ce1\u6cab\u4f1a\u7834\u88c2\u5417\uff1f\u91cf\u5b50\u8ba1\u7b97\u80fd\u5426\u201c\u98a0\u8986\u201d\u82f1\u4f1f\u8fbe\u82af\u7247\uff1f\u6df1\u5733\u623f\u5b50\u8fd8\u4f1a\u7ee7\u7eed\u4e0b\u964d\u5417\uff1f",
+          "summary": "\n\u2022 Main Topic: \u4e3a\u4ec0\u4e48\u522b\u78b0\u673a\u5668\u4eba\u548c\u5177\u8eab\u667a\u80fd\uff1fAI\u6ce1\u6cab\u4f1a\u7834\u88c2\u5417\uff1f\u91cf\u5b50\u8ba1\u7b97\u80fd\u5426\u201c\u98a0\u8986\u201d\u82f1\u4f1f\u8fbe\u82af\u7247\uff1f\u6df1\u5733\u623f\u5b50\u8fd8\u4f1a\u7ee7\u7eed\u4e0b\u964d\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 1:51:43\n  - Unable to generate AI summary due to technical issues\n\u2022 Note..."
+        },
+        {
+          "video_id": "KnH-GDvEOHM",
+          "title": "\u7acb\u515a\u804a\u5929\u5ba4\uff083\u5c0f\u65f6\uff09\uff1a\u666e\u901a\u4eba\u4e0d\u4e70\u623f\uff0c\u8be5\u5982\u4f55\u89c4\u5212\u672a\u6765\uff1f\u4e2d\u56fdAI\u8f6e\u6d41\u4e0a\u5e02\uff0c\u672a\u6765\u5982\u4f55\uff1fAI\u65f6\u4ee3\u54ea\u4e9b\u53ef\u4ee5\u6295\u8d44\uff1frobotaxi\u548c\u4f4e\u7a7a\u7ecf\u6d4e\u672a\u6765\u80fd\u653e\u5f00\u5417\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u804a\u5929\u5ba4\uff083\u5c0f\u65f6\uff09\uff1a\u666e\u901a\u4eba\u4e0d\u4e70\u623f\uff0c\u8be5\u5982\u4f55\u89c4\u5212\u672a\u6765\uff1f\u4e2d\u56fdAI\u8f6e\u6d41\u4e0a\u5e02\uff0c\u672a\u6765\u5982\u4f55\uff1fAI\u65f6\u4ee3\u54ea\u4e9b\u53ef\u4ee5\u6295\u8d44\uff1frobotaxi\u548c\u4f4e\u7a7a\u7ecf\u6d4e\u672a\u6765\u80fd\u653e\u5f00\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 2:45:54\n  - Unable to generate AI summary due to tec..."
+        }
+      ],
       "get_latest_only": false
     }
   ]
