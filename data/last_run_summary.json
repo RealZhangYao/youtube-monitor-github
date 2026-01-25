@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-01-24T12:28:04.059174+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2026-01-25T01:18:39.995885+00:00",
+  "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,8 +8,14 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
+      "new_videos_count": 1,
+      "processed_videos": [
+        {
+          "video_id": "h__-3Jj6Okw",
+          "title": "\u7acb\u515a\u8fde\u7eed\u81ed\u9a82\u7f51\u53cb2\u5c0f\u65f6\uff1a\u7238\u5988\u7ed9\u62111000\u4e07\uff0c\u6211\u5e94\u8be5\u5728\u5317\u4e0a\u5e7f\u6df1\u4e70\u623f\u5417\uff1f2026\u5e74\u5230\u5e95\u80fd\u4e0d\u80fd\u4e70\u623f\uff1f\u4e3a\u4ec0\u4e48\u4e00\u7ebf\u57ce\u5e02\u65b0\u623f\u662f\u8d22\u52a1\u9677\u9631\uff1f\u666e\u901a\u4eba\u5230\u5e95\u8bfb\u535a\u58eb\u8fd8\u662f\u8fdb\u5927\u5382\uff1f",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u8fde\u7eed\u81ed\u9a82\u7f51\u53cb2\u5c0f\u65f6\uff1a\u7238\u5988\u7ed9\u62111000\u4e07\uff0c\u6211\u5e94\u8be5\u5728\u5317\u4e0a\u5e7f\u6df1\u4e70\u623f\u5417\uff1f2026\u5e74\u5230\u5e95\u80fd\u4e0d\u80fd\u4e70\u623f\uff1f\u4e3a\u4ec0\u4e48\u4e00\u7ebf\u57ce\u5e02\u65b0\u623f\u662f\u8d22\u52a1\u9677\u9631\uff1f\u666e\u901a\u4eba\u5230\u5e95\u8bfb\u535a\u58eb\u8fd8\u662f\u8fdb\u5927\u5382\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 1:56:58\n  - Unable to generate AI summary due t..."
+        }
+      ],
       "get_latest_only": false
     }
   ]
