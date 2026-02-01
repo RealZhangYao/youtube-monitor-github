@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-01-31T12:31:50.670007+00:00",
-  "total_new_videos": 1,
+  "timestamp": "2026-02-01T01:45:28.975136+00:00",
+  "total_new_videos": 0,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,14 +8,8 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 1,
-      "processed_videos": [
-        {
-          "video_id": "axJOYOrWxQo",
-          "title": "2026\u5e74\u80fd\u4e70\u623f\u5417\uff1f\u7acb\u515a\uff1a\u4e2d\u56fd\u9ad8\u5c42\u697c\u623f\u662f\u7eaf\u6d88\u8d39\uff0c\u63a5\u53d7\u4ef7\u503c\u5f52\u96f6\uff0c\u5c31\u53ef\u4ee5\u4e70\uff01",
-          "summary": "\n\u2022 Main Topic: 2026\u5e74\u80fd\u4e70\u623f\u5417\uff1f\u7acb\u515a\uff1a\u4e2d\u56fd\u9ad8\u5c42\u697c\u623f\u662f\u7eaf\u6d88\u8d39\uff0c\u63a5\u53d7\u4ef7\u503c\u5f52\u96f6\uff0c\u5c31\u53ef\u4ee5\u4e70\uff01\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 29:27\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch th..."
-        }
-      ],
+      "new_videos_count": 0,
+      "processed_videos": [],
       "get_latest_only": false
     }
   ]
