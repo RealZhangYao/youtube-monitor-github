@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-02-22T01:27:18.686015+00:00",
-  "total_new_videos": 0,
+  "timestamp": "2026-02-22T12:33:33.758728+00:00",
+  "total_new_videos": 3,
   "channels_processed": 1,
   "target_username": "lidangzzz",
   "use_downsub": true,
@@ -8,8 +8,24 @@
     {
       "channel_id": "UC4gzU_8MxRDiQrSFOiT79tQ",
       "channel_name": "\u7acb\u515a lidang",
-      "new_videos_count": 0,
-      "processed_videos": [],
+      "new_videos_count": 3,
+      "processed_videos": [
+        {
+          "video_id": "IYZi8J5ZFaA",
+          "title": "\u5e74\u5ea6\u9876\u7ea7\u9f9f\u7537\uff01\u672a\u5a5a\u59bb\u903c\u7537\u65b9\u5728\u5355\u4f4d\u95e8\u53e3\u4e70\u8c6a\u5b85\uff0c\u4e0d\u4e70\u5c31\u79bb\u5a5a\uff0c\u7ed3\u679c\u88ab\u7acb\u515a\u81ed\u9a82\u534a\u5c0f\u65f6\u3002\u97e9\u56fd\u5783\u573e\u6c34\u535a\u58eb\uff0c\u770b\u5f97\u4e0a\u672c\u79d1\u5b66\u5386\u7684\u516c\u52a1\u5458\u5417\uff1f\u4e3a\u4ec0\u4e48\u76f8\u4eb2\u5343\u4e07\u522b\u627e\u4e8c\u4e09\u672c\u5927\u5b66\u8001\u5e08\uff1f",
+          "summary": "\n\u2022 Main Topic: \u5e74\u5ea6\u9876\u7ea7\u9f9f\u7537\uff01\u672a\u5a5a\u59bb\u903c\u7537\u65b9\u5728\u5355\u4f4d\u95e8\u53e3\u4e70\u8c6a\u5b85\uff0c\u4e0d\u4e70\u5c31\u79bb\u5a5a\uff0c\u7ed3\u679c\u88ab\u7acb\u515a\u81ed\u9a82\u534a\u5c0f\u65f6\u3002\u97e9\u56fd\u5783\u573e\u6c34\u535a\u58eb\uff0c\u770b\u5f97\u4e0a\u672c\u79d1\u5b66\u5386\u7684\u516c\u52a1\u5458\u5417\uff1f\u4e3a\u4ec0\u4e48\u76f8\u4eb2\u5343\u4e07\u522b\u627e\u4e8c\u4e09\u672c\u5927\u5b66\u8001\u5e08\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 36:11\n  - Unable to generate AI summary due to..."
+        },
+        {
+          "video_id": "0hLuR9JekTs",
+          "title": "\u4e2d\u56fd\u6a21\u8303\u592b\u59bb\uff1a\u6b7b\u4e5f\u4e0d\u4e70\u623f\uff0c\u575a\u51b3\u4e0d\u88ab\u571f\u5730\u8d22\u653f\u5272\u4e86\u97ed\u83dc",
+          "summary": "\n\u2022 Main Topic: \u4e2d\u56fd\u6a21\u8303\u592b\u59bb\uff1a\u6b7b\u4e5f\u4e0d\u4e70\u623f\uff0c\u575a\u51b3\u4e0d\u88ab\u571f\u5730\u8d22\u653f\u5272\u4e86\u97ed\u83dc\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 24:45\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video dir..."
+        },
+        {
+          "video_id": "ukq6U5EqbQ4",
+          "title": "\u5b69\u5b50\u4e94\u4e94\u5206\u6d41\u8fdb\u4e2d\u4e13\uff0c\u7238\u7238\u5728\u76f4\u64ad\u95f4\u88ab\u7acb\u515a\u9a82\u54ed\uff01\u5b66\u4e60\u5dee\u7684\u5b69\u5b50\uff0c\u5230\u5e95\u5982\u4f55\u89c4\u5212\u672a\u6765\uff1f\u7acb\u515a\u624b\u628a\u624b\u6559\u4f60\u89c4\u5212",
+          "summary": "\n\u2022 Main Topic: \u5b69\u5b50\u4e94\u4e94\u5206\u6d41\u8fdb\u4e2d\u4e13\uff0c\u7238\u7238\u5728\u76f4\u64ad\u95f4\u88ab\u7acb\u515a\u9a82\u54ed\uff01\u5b66\u4e60\u5dee\u7684\u5b69\u5b50\uff0c\u5230\u5e95\u5982\u4f55\u89c4\u5212\u672a\u6765\uff1f\u7acb\u515a\u624b\u628a\u624b\u6559\u4f60\u89c4\u5212\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 49:48\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Plea..."
+        }
+      ],
       "get_latest_only": false
     }
   ]
