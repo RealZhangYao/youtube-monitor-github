@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-07T12:31:48.288835+00:00",
+  "timestamp": "2026-03-08T01:25:45.517470+00:00",
   "total_new_videos": 1,
   "channels_processed": 1,
   "target_username": "lidangzzz",
@@ -11,9 +11,9 @@
       "new_videos_count": 1,
       "processed_videos": [
         {
-          "video_id": "1IE3UTfoaX0",
-          "title": "\u7acb\u515a\u76f4\u64ad013 2026\u5e74\u80fd\u4e70\u623f\u4e86\u5417\uff1f",
-          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u76f4\u64ad013 2026\u5e74\u80fd\u4e70\u623f\u4e86\u5417\uff1f\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 1:12:54\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the video directl..."
+          "video_id": "sywIq6wse-I",
+          "title": "\u7acb\u515a\u81ed\u9a82\u5177\u8eab\u667a\u80fd\uff1a\u4e2d\u56fd\u6700\u5927\u7684\u6280\u672f\u548c\u5546\u4e1a\u9a97\u5c40\u4e4b\u4e00\uff0c\u4ec5\u6b21\u4e8e5G\u548c\u9e3f\u8499",
+          "summary": "\n\u2022 Main Topic: \u7acb\u515a\u81ed\u9a82\u5177\u8eab\u667a\u80fd\uff1a\u4e2d\u56fd\u6700\u5927\u7684\u6280\u672f\u548c\u5546\u4e1a\u9a97\u5c40\u4e4b\u4e00\uff0c\u4ec5\u6b21\u4e8e5G\u548c\u9e3f\u8499\n\u2022 Key Points:\n  - Video published by \u7acb\u515a lidang\n  - Duration: 32:40\n  - Unable to generate AI summary due to technical issues\n\u2022 Note: Please watch the vi..."
         }
       ],
       "get_latest_only": false
